@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.produtos-container {
+  padding: 3rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Novo Título Sofisticado */
+.produtos-container h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    color: #111;
+    position: relative;
+  }
+
+.produtos-container h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: #111;
+    margin: 0.8rem auto 0;
+  }
+
+.produtos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.produto-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.produto-card img {
+  max-width: 200px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.produto-card img:hover {
+  transform: scale(1.05);
+}
+
+.produto-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.4rem;
+}
+
+.produto-card .descricao {
+  font-size: 0.92rem;
+  color: #555;
+  margin-bottom: 0.6rem;
+  min-height: 48px;
+}
+
+/* Preço no pix */
+.preco-pix {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00b300;
+  margin-bottom: 0.2rem;
+}
+
+.no-pix {
+  color: #555;
+  font-size: 0.95rem;
+  margin-left: 4px;
+}
+
+/* Preço parcelado */
+.preco-parcelado {
+  font-size: 1.05rem;
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+.com-prime {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #444;
+  margin-left: 4px;
+}
+
+/* Parcelamento info */
+.parcelamento {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.info-parcela {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Botão refinado */
+.btn-comprar {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.6rem;
+  background-color: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-comprar:hover {
+  background-color: #444;
+  transform: translateY(-2px);
+}
+
+.produto-card button {
+  margin-top: auto;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .produtos-container h2 {
+    font-size: 2rem;
+  }
+
+  .produto-card img {
+    max-width: 160px;
+  }
+}
+
+@media (max-width: 500px) {
+  .produto-card {
+    padding: 1rem;
+  }
+
+  .produto-card h3 {
+    font-size: 1rem;
+  }
+
+  .produto-card .descricao {
+    font-size: 0.88rem;
+  }
+
+  .preco-pix {
+    font-size: 1.1rem;
+  }
+}
+
+html, body {
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

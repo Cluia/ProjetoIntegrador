@@ -1,0 +1,38 @@
+/* src/styles/PromoBanner.css */
+.promo-banner {
+    background-color: #fff;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .promo-marquee {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .promo-track {
+    display: inline-block;
+    padding: 1rem 0;
+    animation: scroll 20s linear infinite;
+  }
+  
+  .promo-item {
+    display: inline-block;
+    margin: 0 3rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111;
+    letter-spacing: 0.05em;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  

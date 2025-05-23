@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap');
+
+.home-container {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    padding: 0;
+    margin: 0;
+}
+
+/* Hero Carousel (Banner Principal) */
+.hero-carousel {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel-slide {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    max-height: 400px;
+}
+
+.carousel-text {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    z-index: 2;
+    max-width: 500px;
+}
+
+.carousel-text h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.carousel-text p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.carousel-text .btn-explorar {
+    padding: 1rem 2rem;
+    background-color: #6a0dad;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.carousel-text .btn-explorar:hover {
+    background-color: #5800a8;
+}
+
+/* Categorias */
+.categorias-section {
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.categorias-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #222;
+}
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem;
+}
+
+.categoria-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.categoria-card:hover {
+    transform: translateY(-5px);
+}
+
+.categoria-card img {
+    max-width: 100%;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 0.8rem;
+}
+
+.categoria-card p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Vitrine Best Sellers */
+.vitrine-section {
+    padding: 3rem 5%;
+    text-align: center;
+}
+
+.vitrine-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.vitrine-section h2::after {
+    content: '';
+    width: 60px;
+    height: 2px;
+    background-color: #111;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vitrine-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.vitrine-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    padding: 1.8rem 1.4rem;
+    max-width: 300px;
+    width: 100%;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vitrine-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.vitrine-card img {
+    width: 200px;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.vitrine-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.vitrine-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.6rem;
+    min-height: 40px;
+}
+
+.vitrine-card .preco {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00b300;
+    margin-bottom: 1rem;
+}
+
+.vitrine-card .btn-comprar {
+    padding: 0.9rem 1.6rem;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vitrine-card .btn-comprar:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .carousel-text {
+        position: static;
+        transform: none;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .carousel-text h1 {
+        font-size: 2rem;
+    }
+
+    .vitrine-section h2 {
+        font-size: 2rem;
+    }
+
+    .vitrine-card {
+        padding: 1.2rem;
+    }
+}
+
+/* Botão sobreposto opcional (pode remover se não for necessário) */
+.carousel-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    background-color: #6a0dad;
+    color: white;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.carousel-overlay:hover {
+    background-color: #5800a8;
+}
+
+@media (max-width: 768px) {
+    .carousel-overlay {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.4rem;
+        bottom: 20px;
+        left: 20px;
+    }
+}

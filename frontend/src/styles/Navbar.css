@@ -1,0 +1,96 @@
+.navbar {
+    background-color: #121212;
+    padding: 0.8rem 1.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Logo */
+  .logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* Right Section: Login and Menu */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .login-icon svg,
+  .cart-icon svg {
+    color: white; /* Carrinho branco */
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .login-icon svg:hover,
+  .cart-icon svg:hover {
+    color: #a259ff;
+  }
+  
+  /* Menu hover fix */
+  .menu-container {
+    position: relative;
+  }
+  
+  /* Mostra o menu se o mouse estiver sobre o ícone OU sobre o menu */
+  .menu-container:hover .dropdown-menu {
+    display: flex;
+  }
+  
+  .menu-icon {
+    cursor: pointer;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    padding: 0.6rem 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    min-width: 170px;
+    z-index: 2000;
+  }
+  
+  .dropdown-menu a {
+    color: white;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #333;
+    color: #a259ff;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+  
+    .dropdown-menu {
+      top: 35px;
+      right: 10px;
+    }
+  }
+  
