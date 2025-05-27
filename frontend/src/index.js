@@ -6,6 +6,9 @@ import App from './App';
 import Login from './js/login';
 import Produtos from './js/Produtos';
 import MousesPage from './pages/MousesPage';
+import TecladosPage from './pages/TecladosPage';
+import AudioPage from './pages/AudioPage'; // ✅ novo
+import MonitoresPage from './pages/MonitoresPage'; // ✅ novo
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 
@@ -19,6 +22,9 @@ root.render(
         <Route path="/login" element={<Login />} />
         <Route path="/produtos" element={<Produtos />} />
         <Route path="/page1" element={<MousesPage />} />
+        <Route path="/page2" element={<TecladosPage />} />
+        <Route path="/page3" element={<AudioPage />} /> {/* ✅ novo */}
+        <Route path="/page4" element={<MonitoresPage />} /> {/* ✅ novo */}
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
       </Route>

@@ -1,9 +1,11 @@
 // src/pages/MousesPage.js
 import React from 'react';
 import '../styles/Produtos.css';
+import { useCart } from '../context/CartContext';
 
 const mouses = [
   {
+    id: 101,
     nome: 'Pulsefire FPS Pro',
     descricao: 'Mouse gamer com sensor de precisão e iluminação RGB.',
     precoPix: 'R$ 299,00',
@@ -13,6 +15,7 @@ const mouses = [
     imagem: process.env.PUBLIC_URL + '/img/mouse-gamer.jpg'
   },
   {
+    id: 102,
     nome: 'Pulsefire Core RGB',
     descricao: 'Sensor óptico Pixart 3327 com RGB personalizável.',
     precoPix: 'R$ 189,00',
@@ -22,6 +25,7 @@ const mouses = [
     imagem: process.env.PUBLIC_URL + '/img/mouse-rgb.jpg'
   },
   {
+    id: 103,
     nome: 'Pulsefire Haste',
     descricao: 'Design ultraleve de 59g com estrutura perfurada.',
     precoPix: 'R$ 279,00',
@@ -31,6 +35,7 @@ const mouses = [
     imagem: process.env.PUBLIC_URL + '/img/mouse-haste.jpg'
   },
   {
+    id: 104,
     nome: 'Pulsefire Dart',
     descricao: 'Mouse sem fio com carregamento rápido Qi.',
     precoPix: 'R$ 449,00',
@@ -40,6 +45,7 @@ const mouses = [
     imagem: process.env.PUBLIC_URL + '/img/mouse-dart.jpg'
   },
   {
+    id: 105,
     nome: 'Pulsefire Surge',
     descricao: 'Iluminação 360° RGB e sensor Pixart 3389.',
     precoPix: 'R$ 329,00',
@@ -49,6 +55,7 @@ const mouses = [
     imagem: process.env.PUBLIC_URL + '/img/mouse-surge.jpg'
   },
   {
+    id: 106,
     nome: 'Pulsefire Raid',
     descricao: 'Botões laterais extras e design ergonômico.',
     precoPix: 'R$ 319,00',
@@ -60,6 +67,8 @@ const mouses = [
 ];
 
 function MousesPage() {
+  const { addToCart } = useCart();
+
   return (
     <div className="produtos-container">
       <h1 className="categoria-title">Mouses Gamer</h1>
@@ -68,8 +77,8 @@ function MousesPage() {
       </p>
 
       <div className="produtos-grid">
-        {mouses.map((mouse, i) => (
-          <div className="produto-card" key={i}>
+        {mouses.map((mouse) => (
+          <div className="produto-card" key={mouse.id}>
             <img src={mouse.imagem} alt={mouse.nome} />
             <h3>{mouse.nome}</h3>
             <p className="descricao">{mouse.descricao}</p>
@@ -77,7 +86,22 @@ function MousesPage() {
             <p className="preco-card">{mouse.precoCard} <span className="no-card">com 3Devs card</span></p>
             <p className="parcelamento">{mouse.parcelamento}</p>
             <p className="total">{mouse.total}</p>
-            <button className="btn-comprar">Adicionar ao carrinho</button>
+            <button
+              className="btn-comprar"
+              onClick={() =>
+                addToCart({
+                  id: mouse.id,
+                  name: mouse.nome,
+                  price: parseFloat(
+                    mouse.precoPix.replace('R$', '').replace('.', '').replace(',', '.')
+                  ),
+                  image: mouse.imagem,
+                  quantity: 1
+                })
+              }
+            >
+              Adicionar ao carrinho
+            </button>
           </div>
         ))}
       </div>
