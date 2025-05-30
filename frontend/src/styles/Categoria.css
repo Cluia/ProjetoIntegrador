@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.categoria-container {
+  padding: 3rem 5%;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+}
+
+.categoria-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #111;
+  text-align: center;
+}
+
+.categoria-container p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #444;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.produtos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.produto-card {
+  background: white;
+  border-radius: 14px;
+  padding: 1.6rem;
+  width: 260px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.produto-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.produto-card h3 {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.produto-card .preco {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00b300;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.btn-comprar {
+  background-color: #111;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.btn-comprar:hover {
+  background-color: #333;
+}

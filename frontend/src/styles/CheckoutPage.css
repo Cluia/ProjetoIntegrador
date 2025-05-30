@@ -1,0 +1,64 @@
+/* src/styles/CheckoutPage.css */
+
+.checkout-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+  }
+  
+  .checkout-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .checkout-form section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .checkout-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  .row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .payment-box {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: #fafafa;
+  }
+  
+  .card-icons span {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .submit-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
