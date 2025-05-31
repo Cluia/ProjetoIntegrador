@@ -1,6 +1,4 @@
-// src/pages/AdminDashboard.js
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import UsuariosCRUD from '../components/admin/UsuariosCRUD';
 import EstoqueCRUD from '../components/admin/EstoqueCRUD';
 import '../styles/AdminDashboard.css';

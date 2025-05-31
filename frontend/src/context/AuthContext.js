@@ -30,16 +30,16 @@ export const AuthProvider = ({ children }) => {
   }, [logout]);
 
   const login = useCallback((token, userData) => {
-    localStorage.setItem('token', token);
-    setUser(userData);
-    
-    // Redireciona baseado no role
-    if (userData?.role === 'admin') {
-      navigate('/admin/dashboard');
-    } else {
-      navigate('/');
-    }
-  }, [navigate]);
+  localStorage.setItem('token', token);
+  setUser(userData);
+  
+  // Redireciona baseado no role
+  if (userData?.role === 'admin') {
+    navigate('/admin/dashboard');
+  } else {
+    navigate('/');
+  }
+}, [navigate]);
 
   return (
     <AuthContext.Provider value={{ user, isLoading, login, logout }}>
