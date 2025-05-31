@@ -5,41 +5,35 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// Registro de Funcionário (para administradores ou processo inicial)
-// Esta rota deve ser protegida após o primeiro admin ser criado
 exports.register = async (req, res) => {
-  const { Nome_Completo, CPF, Email, Telefone, Cargo, Senha, Nivel_Acesso, Ativo } = req.body;
+  const { Email, Senha } = req.body;
 
   try {
-    // Verificar se o funcionário já existe pelo email
-    let funcionario = await Funcionario.findOne({ Email });
-
-    if (funcionario) {
-      return res.status(400).json({ msg: 'Funcionário já existe com este email.' });
-    }
-    
-    // Verificar se o CPF já está em uso (se o CPF for obrigatório e único)
-    if (CPF) {
-      funcionario = await Funcionario.findOne({ CPF });
-      if (funcionario) {
-        return res.status(400).json({ msg: 'Funcionário já existe com este CPF.' });
-      }
+    // Verificar se já existe usuário com este email
+    const funcionarioExistente = await Funcionario.findOne({ Email });
+    if (funcionarioExistente) {
+      return res.status(400).json({ msg: 'Este e-mail já está cadastrado.' });
     }
 
-    funcionario = new Funcionario({
-      Nome_Completo,
-      CPF,
+    // Verificar se é o primeiro usuário do sistema (tornar admin)
+    const totalFuncionarios = await Funcionario.countDocuments();
+    const isFirstUser = totalFuncionarios === 0;
+
+    const novoFuncionario = new Funcionario({
+      Nome_Completo: req.body.Nome_Completo || Email.split('@')[0],
       Email,
-      Telefone,
-      Cargo,
-      Senha, // A senha será hashada pelo hook 'pre-save' no modelo Funcionario
-      Nivel_Acesso,
-      Ativo
+      Senha,
+      Cargo: isFirstUser ? 'admin' : 'usuario',
+      Nivel_Acesso: isFirstUser ? 3 : 1,
+      Ativo: true
     });
 
-    await funcionario.save(); // Salva o novo funcionário no MongoDB
+    await novoFuncionario.save();
 
-    res.status(201).json({ msg: 'Funcionário registrado com sucesso', id: funcionario._id });
+    res.status(201).json({ 
+      msg: 'Cadastro realizado com sucesso',
+      isAdmin: novoFuncionario.Cargo === 'admin'
+    });
 
   } catch (err) {
     console.error(err.message);
@@ -47,29 +41,24 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login de Funcionário
 exports.login = async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    // Verificar se o funcionário existe pelo email
-    let funcionario = await Funcionario.findOne({ Email: email });
-
+    const funcionario = await Funcionario.findOne({ Email: email });
     if (!funcionario) {
       return res.status(400).json({ msg: 'Credenciais inválidas' });
     }
 
-    // Comparar senhas
-    const isMatch = await funcionario.matchPassword(senha); // Usa o método definido no modelo
+    const isMatch = await funcionario.matchPassword(senha);
     if (!isMatch) {
       return res.status(400).json({ msg: 'Credenciais inválidas' });
     }
 
-    // Gerar JWT
     const payload = {
       user: {
-        id: funcionario.id, // O _id do MongoDB é acessível como .id no Mongoose
-        role: funcionario.Cargo, // Usando o cargo como role no JWT
+        id: funcionario.id,
+        role: funcionario.Cargo,
         email: funcionario.Email
       }
     };
@@ -77,10 +66,17 @@ exports.login = async (req, res) => {
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
-      { expiresIn: '1h' }, // Token expira em 1 hora
+      { expiresIn: '8h' },
       (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ 
+          token,
+          user: {
+            id: funcionario.id,
+            email: funcionario.Email,
+            role: funcionario.Cargo
+          }
+        });
       }
     );
 

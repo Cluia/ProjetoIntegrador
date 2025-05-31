@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db'); // Importa a função de conexão com o MongoDB
+const adminRoutes = require('./routes/admin');
 
 // Importar rotas
 const authRoutes = require('./routes/auth');
@@ -25,6 +26,7 @@ app.use(express.json()); // Habilita o parsing de JSON no corpo das requisiçõe
 app.use('/api/auth', authRoutes);
 app.use('/api/produtos', produtoRoutes);
 app.use('/api/funcionarios', funcionarioRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Rota de teste
 app.get('/', (req, res) => {
